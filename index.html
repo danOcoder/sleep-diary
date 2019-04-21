@@ -5,19 +5,47 @@
     <title>New Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,600|Playfair+Display:400i,700" rel="stylesheet"> -->
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"
+    />
     <link rel="stylesheet" href="public/styles/styles.css" />
   </head>
 
   <body>
-    <div class="drake">
-      <h1>Ahoy hoy! 🍕</h1>
-    </div>
+    <form>
+      <h2>When did you go to sleep?</h2>
+      <label for="startDate"
+        ><input name="startDate" type="text" id="startDate" placeholder="Date"
+      /></label>
+      <label for="startTime"
+        ><input
+          name="startTime"
+          type="text"
+          id="startTime"
+          placeholder="Time e.g. 9pm"
+      /></label>
+      <label for="endDate"
+        >End Date: <input name="endDate" type="text" id="endDate"
+      /></label>
+      <label for="endTime"
+        >End Time: <input name="endTime" type="text" id="endTime"
+      /></label>
+      <label for="submit"><input type="submit"/></label>
+    </form>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="https://unpkg.com/moment"></script>
     <script src="public/scripts/main.js"></script>
   </body>
 </html>
