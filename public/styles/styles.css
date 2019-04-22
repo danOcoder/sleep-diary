@@ -182,6 +182,102 @@ form {
       -ms-flex-direction: column;
           flex-direction: column; }
 
+/**** Modal ****/
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 30px;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  font-family: sans-serif; }
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(52, 73, 94, 0.8);
+  z-index: 50;
+  visibility: hidden;
+  -webkit-transition: 0.7s;
+  transition: 0.7s; }
+
+.modal {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+  width: 500px;
+  height: 400px;
+  margin-left: -200px;
+  margin-top: -150px;
+  padding: 40px 10px 0 10px;
+  background: white;
+  border-radius: 4px;
+  z-index: 100;
+  visibility: hidden;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+  -webkit-transform: translateY(45px);
+          transform: translateY(45px); }
+
+.active {
+  visibility: visible;
+  opacity: 1; }
+
+.active + .modal {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0); }
+
+.flexParentModal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.modal ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 5px;
+  width: calc((100% / 3) - 5px);
+  height: 150px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #66bbb0;
+  color: white; }
+
+.modal ul li:last-child {
+  background: blue; }
+
+.summaryWrap {
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 4px; }
+
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -190,3 +286,99 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column; }
+
+/**** Modal ****/
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 30px;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  font-family: sans-serif; }
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(52, 73, 94, 0.8);
+  z-index: 50;
+  visibility: hidden;
+  -webkit-transition: 0.7s;
+  transition: 0.7s; }
+
+.modal {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+  width: 500px;
+  height: 400px;
+  margin-left: -200px;
+  margin-top: -150px;
+  padding: 40px 10px 0 10px;
+  background: white;
+  border-radius: 4px;
+  z-index: 100;
+  visibility: hidden;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+  -webkit-transform: translateY(45px);
+          transform: translateY(45px); }
+
+.active {
+  visibility: visible;
+  opacity: 1; }
+
+.active + .modal {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0); }
+
+.flexParentModal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.modal ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 5px;
+  width: calc((100% / 3) - 5px);
+  height: 150px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #66bbb0;
+  color: white; }
+
+.modal ul li:last-child {
+  background: blue; }
+
+.summaryWrap {
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 4px; }

@@ -18,7 +18,7 @@
 
   <body>
     <form>
-      <h2>When did you go to sleep?</h2>
+      <h2>When did you get into bed?</h2>
       <label for="startDate"
         ><input name="startDate" type="text" id="startDate" placeholder="Date"
       /></label>
@@ -29,14 +29,60 @@
           id="startTime"
           placeholder="Time e.g. 9pm"
       /></label>
+      <h2>How long did it take you to fall asleep</h2>
+      <label for="timeToSleep"
+        ><input
+          name="timeToSleep"
+          type="number"
+          id="timeToSleep"
+          placeholder="# of minutes"
+      /></label>
+      <h2>
+        If you woke during the night what was the total amount of time you were
+        awake?
+      </h2>
+      <label for="awakenings"
+        ><input
+          name="awakenings"
+          type="number"
+          id="awakenings"
+          placeholder="# of minutes"
+      /></label>
+      <h2>When did you wake for the final time?</h2>
       <label for="endDate"
-        >End Date: <input name="endDate" type="text" id="endDate"
+        ><input name="endDate" type="text" id="endDate" placeholder="Date"
       /></label>
       <label for="endTime"
-        >End Time: <input name="endTime" type="text" id="endTime"
+        ><input
+          name="endTime"
+          type="text"
+          id="endTime"
+          placeholder="Time e.g. 5am"
       /></label>
       <label for="submit"><input type="submit"/></label>
     </form>
+
+    <div class="mask" role="dialog"></div>
+    <div class="modal" role="alert">
+      <ul class="flexParentModal">
+        <li>
+          <h4>Time asleep</h4>
+          <h3><span class="timeAsleep"></span></h3>
+        </li>
+        <li>
+          <h4>Time in bed</h4>
+          <h3><span class="timeInBed"></span></h3>
+        </li>
+        <li>
+          <h4>Sleep efficiency</h4>
+          <h3><span class="sleepEfficiency"></span></h3>
+        </li>
+      </ul>
+      <div class="summaryWrap">
+        <h4><span class="summary"></span></h4>
+      </div>
+      <button class="close" role="button">X</button>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -46,6 +92,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script src="https://unpkg.com/moment"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="public/scripts/main.js"></script>
   </body>
 </html>
