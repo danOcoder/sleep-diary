@@ -30,18 +30,14 @@ app.duration = function () {
   } else {
     app.errorMessage('Invalid time - ensure time entries are formatted correctly i.e. 10pm, 23:15 or 6.15am');
   }
-}; // calculate total time awake
-
-
-app.totalAwake = function () {
-  var timeToSleep = parseInt($('input[name="timeToSleep"]').val());
-  var awakenings = parseInt($('input[name="awakenings"]').val());
-  return timeToSleep + awakenings;
 }; // calculate total time asleep
 
 
 app.totalAsleep = function () {
-  return app.duration() - app.totalAwake();
+  var timeToSleep = parseInt($('input[name="timeToSleep"]').val());
+  var awakenings = parseInt($('input[name="awakenings"]').val());
+  var totalAwake = timeToSleep + awakenings;
+  return app.duration() - totalAwake;
 }; // calculate sleep efficiency %
 
 
@@ -119,7 +115,10 @@ app.init = function () {
   });
   $('form').on('submit', function (event) {
     event.preventDefault();
-    app.summaryModal(app.calculateEfficiency(), app.totalAsleep(), app.convertMinsToHrsMins(app.totalAsleep()));
+
+    if (isNaN(app.calculateEfficiency()) === false) {
+      app.summaryModal(app.calculateEfficiency(), app.totalAsleep(), app.convertMinsToHrsMins(app.totalAsleep()));
+    }
   });
   $('.closeModal, .mask').on('click', function () {
     app.closeModal();
