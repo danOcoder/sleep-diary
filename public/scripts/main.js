@@ -1,49 +1,54 @@
 "use strict";
 
-var app = {};
-$('#startDate').datepicker({
-  dateFormat: 'yy-mm-dd'
-});
-$('#startTime').timepicker({
-  timeFormat: 'HH:mm:ss',
-  dropdown: false
-});
-$('#endDate').datepicker({
-  dateFormat: 'yy-mm-dd'
-});
-$('#endTime').timepicker({
-  timeFormat: 'HH:mm:ss',
-  dropdown: false
-});
+var app = {}; // initialize datepicker & timepicker
 
-app.createMoment = function (input) {
-  var date = $("input[name=\"".concat(input, "Date\"]")).val();
-  var time = $("input[name=\"".concat(input, "Time\"]")).val();
-  return moment(date + ' ' + time);
-};
+$('#startDate, #endDate').datepicker({
+  dateFormat: 'yy-mm-dd'
+});
+$('#startTime, #endTime').timepicker({
+  timeFormat: 'HH:mm:ss',
+  dropdown: false
+}); // use regex to ensure time entry is formatted correctly then convert values from date & time inputs into a Date object using moment.js method, finally return duration in bed as minutes using moment.js methods isBefore, duration & asMinutes
 
 app.duration = function () {
-  if (moment(app.createMoment('start')).isBefore(app.createMoment('end'))) {
-    var duration = moment.duration(app.createMoment('end').diff(app.createMoment('start')));
-    return duration.asMinutes();
+  var timeFormat = RegExp(/(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)/);
+  var startDate = $("input[name=\"startDate\"]").val();
+  var startTime = $("input[name=\"startTime\"]").val();
+  var endDate = $("input[name=\"endDate\"]").val();
+  var endTime = $("input[name=\"endTime\"]").val();
+
+  if (timeFormat.test(startTime) && timeFormat.test(endTime)) {
+    var sleepStart = moment("".concat(startDate, " ").concat(startTime));
+    var sleepEnd = moment("".concat(endDate, " ").concat(endTime));
+
+    if (moment(sleepStart).isBefore(sleepEnd)) {
+      var duration = moment.duration(sleepEnd.diff(sleepStart));
+      return duration.asMinutes();
+    } else {
+      app.errorMessage('Sleep start cannot occur before sleep end');
+    }
   } else {
-    swal("Something doesn't look right", 'Please check your entries & try again', 'warning');
+    app.errorMessage('Invalid time - ensure time entries are formatted correctly i.e. 10pm, 23:15 or 6.15am');
   }
-};
+}; // calculate total time awake
+
 
 app.totalAwake = function () {
   var timeToSleep = parseInt($('input[name="timeToSleep"]').val());
   var awakenings = parseInt($('input[name="awakenings"]').val());
   return timeToSleep + awakenings;
-};
+}; // calculate total time asleep
+
 
 app.totalAsleep = function () {
   return app.duration() - app.totalAwake();
-};
+}; // calculate sleep efficiency %
+
 
 app.calculateEfficiency = function () {
   return Math.floor(app.totalAsleep() / app.duration() * 100);
-};
+}; // convert minutes into hours & minutes & return as string for use in summary
+
 
 app.convertMinsToHrsMins = function (mins) {
   var hours = Math.floor(mins / 60);
@@ -54,31 +59,35 @@ app.convertMinsToHrsMins = function (mins) {
   } else {
     return "".concat(hours, "hrs ").concat(minutes, "mins");
   }
-};
+}; // add class of active to modal to open & display values calculated
+
 
 app.summaryModal = function (value, value2, value3) {
-  $('.timeAsleep').html(app.convertMinsToHrsMins(app.totalAsleep()));
-  $('.timeInBed').html(app.convertMinsToHrsMins(app.duration()));
-  $('.sleepEfficiency').html("".concat(app.calculateEfficiency(), "%"));
-  $('.summary').html(app.summaryText(app.calculateEfficiency(), app.totalAsleep(), app.convertMinsToHrsMins(app.totalAsleep())));
-  $('.mask').addClass('active');
+  var summaryText;
 
   if (value < 85) {
-    return "A sleep efficiency of less than 85% is considered to be poor, there are many ways to improve this, a great place to start is to review your sleep hygiene.";
+    summaryText = "A sleep efficiency of less than 85% is considered to be poor, there are many ways to improve this, a great place to start is to review your sleep hygiene.";
   } else if (value > 98) {
     if (value2 < 420) {
-      return "A sleep efficiency of ".concat(value, "% is excellent however your ").concat(value3, " of time asleep is less than the recommended 7-8 hours, it can be very beneficial to adopt a routine window for sleep to maximize your time slept.");
+      summaryText = "A sleep efficiency of ".concat(value, "% is excellent however ").concat(value3, " of sleep is less than the recommended 7-8 hours, it can be very beneficial to adopt a routine window for sleep to maximize your time slept.");
     } else {
-      return "A sleep efficiency of ".concat(value, "% & ").concat(value3, " of time asleep is excellent, congratulations & keep up the good work!");
+      summaryText = "A sleep efficiency of ".concat(value, "% & ").concat(value3, " of sleep is excellent, congratulations & keep up the good work!");
     }
   } else {
     if (value2 < 420) {
-      return "A sleep efficiency of ".concat(value, "% is optimal however your ").concat(value3, " of time asleep is less than the recommended 7-8 hours, it can be very beneficial to adopt a routine window for sleep to maximize your time slept.");
+      summaryText = "A sleep efficiency of ".concat(value, "% is optimal however your ").concat(value3, " sleep is less than the recommended 7-8 hours, it can be very beneficial to adopt a routine window for sleep to maximize your time slept.");
     } else {
-      return "A sleep efficiency of ".concat(value, "% & ").concat(value3, " of time asleep is optimal keep up the good work!");
+      summaryText = "A sleep efficiency of ".concat(value, "% & ").concat(value3, " of sleep is optimal keep up the good work!");
     }
   }
-};
+
+  $('.timeInBed').html(app.convertMinsToHrsMins(app.duration()));
+  $('.timeAsleep').html(app.convertMinsToHrsMins(app.totalAsleep()));
+  $('.sleepEfficiency').html("".concat(app.calculateEfficiency(), "%"));
+  $('.summary').html(summaryText);
+  $('.mask').addClass('active');
+}; // closes modal & clears inputs
+
 
 app.closeModal = function () {
   $('.mask').removeClass('active');
@@ -88,17 +97,35 @@ app.closeModal = function () {
   $('input[name="awakenings"]').val('');
   $('input[name="endDate"]').val('');
   $('input[name="endTime"]').val('');
-};
+}; // adds text to warning modal
+
+
+app.errorMessage = function (text) {
+  swal({
+    text: text,
+    icon: 'warning',
+    button: {
+      className: 'closeModal'
+    }
+  });
+}; // initializes event listeners for form submission, smooth scroll & modal close
+
 
 app.init = function () {
+  $('.chevron').on('click', function () {
+    $('html, body').animate({
+      scrollTop: $('form').offset().top
+    }, 1600);
+  });
   $('form').on('submit', function (event) {
     event.preventDefault();
-    app.summaryModal();
+    app.summaryModal(app.calculateEfficiency(), app.totalAsleep(), app.convertMinsToHrsMins(app.totalAsleep()));
   });
-  $('.close, .mask').on('click', function () {
+  $('.closeModal, .mask').on('click', function () {
     app.closeModal();
   });
-};
+}; // blast off!
+
 
 $(function () {
   app.init();

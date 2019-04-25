@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <title>New Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,600|Playfair+Display:400i,700" rel="stylesheet"> -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,600"
+      rel="stylesheet"
+    />
+
     <link
       rel="stylesheet"
       href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
@@ -17,72 +21,126 @@
   </head>
 
   <body>
-    <form>
-      <h2>When did you get into bed?</h2>
-      <label for="startDate"
-        ><input name="startDate" type="text" id="startDate" placeholder="Date"
-      /></label>
-      <label for="startTime"
-        ><input
-          name="startTime"
-          type="text"
-          id="startTime"
-          placeholder="Time e.g. 9pm"
-      /></label>
-      <h2>How long did it take you to fall asleep</h2>
-      <label for="timeToSleep"
-        ><input
-          name="timeToSleep"
-          type="number"
-          id="timeToSleep"
-          placeholder="# of minutes"
-      /></label>
-      <h2>
-        If you woke during the night what was the total amount of time you were
-        awake?
-      </h2>
-      <label for="awakenings"
-        ><input
-          name="awakenings"
-          type="number"
-          id="awakenings"
-          placeholder="# of minutes"
-      /></label>
-      <h2>When did you wake for the final time?</h2>
-      <label for="endDate"
-        ><input name="endDate" type="text" id="endDate" placeholder="Date"
-      /></label>
-      <label for="endTime"
-        ><input
-          name="endTime"
-          type="text"
-          id="endTime"
-          placeholder="Time e.g. 5am"
-      /></label>
-      <label for="submit"><input type="submit"/></label>
-    </form>
-
-    <div class="mask" role="dialog"></div>
-    <div class="modal" role="alert">
-      <ul class="flexParentModal">
-        <li>
-          <h4>Time asleep</h4>
-          <h3><span class="timeAsleep"></span></h3>
-        </li>
-        <li>
-          <h4>Time in bed</h4>
-          <h3><span class="timeInBed"></span></h3>
-        </li>
-        <li>
-          <h4>Sleep efficiency</h4>
-          <h3><span class="sleepEfficiency"></span></h3>
-        </li>
-      </ul>
-      <div class="summaryWrap">
-        <h4><span class="summary"></span></h4>
+    <header>
+      <div class="wrapper">
+        <h1>sleep efficiency calculator</h1>
+        <h2>
+          Sleep efficiency is the ratio of your total time asleep in a night
+          compared to the total amount of time you spent in bed.
+        </h2>
+        <a href="#" class="chevron">
+          <img
+            src="./public/assets/noun_chevron_712775.png"
+            alt="white chevron"
+          />
+        </a>
       </div>
-      <button class="close" role="button">X</button>
-    </div>
+    </header>
+    <main>
+      <div class="wrapper">
+        <form>
+          <div>
+            <h2>When did you get into bed?</h2>
+            <label for="startDate"
+              ><input
+                name="startDate"
+                type="text"
+                id="startDate"
+                class="startDate"
+                placeholder="Date"
+                required
+            /></label>
+            <label for="startTime"
+              ><input
+                name="startTime"
+                type="text"
+                id="startTime"
+                placeholder="Time e.g. 9pm"
+                required
+            /></label>
+          </div>
+          <div>
+            <h2>How long did it take you to fall asleep</h2>
+            <label for="timeToSleep"
+              ><input
+                name="timeToSleep"
+                type="number"
+                id="timeToSleep"
+                placeholder="# of minutes"
+                required
+            /></label>
+          </div>
+          <div>
+            <h2>
+              If you woke during the night what was the total amount of time you
+              were awake?
+            </h2>
+            <label for="awakenings"
+              ><input
+                name="awakenings"
+                type="number"
+                id="awakenings"
+                placeholder="# of minutes"
+                required
+            /></label>
+          </div>
+          <div>
+            <h2>When did you wake for the final time?</h2>
+            <label for="endDate"
+              ><input
+                name="endDate"
+                type="text"
+                id="endDate"
+                class="endDate"
+                placeholder="Date"
+                required
+            /></label>
+            <label for="endTime"
+              ><input
+                name="endTime"
+                type="text"
+                id="endTime"
+                placeholder="Time e.g. 5am"
+                required
+            /></label>
+          </div>
+          <div>
+            <label for="submit"
+              ><input
+                name="submit"
+                type="submit"
+                id="submit"
+                class="submit"
+                value="Calculate"
+            /></label>
+          </div>
+        </form>
+        <div class="mask" role="dialog"></div>
+        <div class="modal" role="alert">
+          <ul>
+            <li>
+              <h2>Time in bed:</h2>
+              <h2 class="timeInBed"></h2>
+            </li>
+            <li>
+              <h2>Time asleep</h2>
+              <h2 class="timeAsleep"></h2>
+            </li>
+            <li>
+              <h2>Sleep efficiency</h2>
+              <h2 class="sleepEfficiency"></h2>
+            </li>
+          </ul>
+          <div class="summaryWrap">
+            <p class="summary"></p>
+          </div>
+          <button class="closeModal" role="button">ok</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a href="mailto: info@danocoder.com">info@danocoder.com</a>
+    </footer>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
