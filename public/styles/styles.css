@@ -220,7 +220,6 @@ header {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 80%, black 100%), url(../assets/background.jpg);
   background-size: cover;
   background-position: center center;
-  padding: 1px;
   font-family: 'Open Sans', sans-serif;
   padding-top: 60px;
   height: 100vh; }
@@ -232,32 +231,32 @@ header {
   margin: 0 auto;
   width: 20%;
   display: block;
-  -webkit-transform: translatey(0px);
-          transform: translatey(0px);
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
   -webkit-animation: float 6s ease-in-out infinite;
           animation: float 6s ease-in-out infinite; }
 
 @-webkit-keyframes float {
   0% {
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); }
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); }
   50% {
-    -webkit-transform: translatey(-20px);
-            transform: translatey(-20px); }
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px); }
   100% {
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); } }
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); } }
 
 @keyframes float {
   0% {
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); }
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); }
   50% {
-    -webkit-transform: translatey(-20px);
-            transform: translatey(-20px); }
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px); }
   100% {
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); } }
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); } }
 
 /**** Main ****/
 main {
@@ -268,7 +267,14 @@ main {
 input {
   border: none;
   padding: 5px;
-  color: #192231; }
+  color: #192231;
+  border: 1px solid transparent;
+  outline: 0; }
+  input:focus {
+    border: 1px solid #78cbf2; }
+  input:required {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
 
 input.startDate,
 input.endDate {
@@ -277,10 +283,6 @@ input.endDate {
 input.submit {
   background-color: #494e6b;
   color: #ffffff; }
-
-input:required {
-  -webkit-box-shadow: none;
-          box-shadow: none; }
 
 form {
   display: -webkit-box;
@@ -409,6 +411,60 @@ footer {
   footer a {
     color: #ffffff;
     font-size: 0.75rem; }
+
+/**** screen meets or exceeds 500px****/
+@media (min-width: 500px) {
+  header {
+    padding-top: 80px; }
+  .chevron {
+    width: 15%; }
+  .modal {
+    width: 478px; }
+  .ui-datepicker {
+    width: 50%; } }
+
+/**** screen meets or exceeds 768px ****/
+@media (min-width: 768px) {
+  header h2 {
+    padding-bottom: 60px; }
+  h1 {
+    font-size: 3rem; }
+  h2,
+  p,
+  .swal-text {
+    font-size: 1.25rem; }
+  .chevron {
+    width: 15%; }
+  form {
+    margin: 0 auto;
+    width: 80%; }
+  .ui-datepicker {
+    width: 50%; } }
+
+/**** screen meets or exceeds 920px****/
+@media (min-width: 920px) {
+  header {
+    padding-top: 100px; }
+    header .wrapper {
+      width: 70%; }
+  .chevron {
+    width: 12%; }
+  form {
+    width: 60%; }
+  .ui-datepicker {
+    width: 40%; } }
+
+/**** screen meets or exceeds 1400px ****/
+@media (min-width: 1400px) {
+  header .wrapper {
+    width: 60%; }
+  .chevron {
+    width: 10%; }
+  form {
+    width: 50%; }
+  .ui-datepicker {
+    width: 30%; } }
+
 
 /**** Variables ****/
 /**** Base Styles ****/
@@ -457,7 +513,6 @@ header {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 80%, black 100%), url(../assets/background.jpg);
   background-size: cover;
   background-position: center center;
-  padding: 1px;
   font-family: 'Open Sans', sans-serif;
   padding-top: 60px;
   height: 100vh; }
@@ -469,32 +524,32 @@ header {
   margin: 0 auto;
   width: 20%;
   display: block;
-  -webkit-transform: translatey(0px);
-          transform: translatey(0px);
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
   -webkit-animation: float 6s ease-in-out infinite;
           animation: float 6s ease-in-out infinite; }
 
 @-webkit-keyframes float {
   0% {
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); }
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); }
   50% {
-    -webkit-transform: translatey(-20px);
-            transform: translatey(-20px); }
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px); }
   100% {
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); } }
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); } }
 
 @keyframes float {
   0% {
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); }
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); }
   50% {
-    -webkit-transform: translatey(-20px);
-            transform: translatey(-20px); }
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px); }
   100% {
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); } }
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); } }
 
 /**** Main ****/
 main {
@@ -505,7 +560,14 @@ main {
 input {
   border: none;
   padding: 5px;
-  color: #192231; }
+  color: #192231;
+  border: 1px solid transparent;
+  outline: 0; }
+  input:focus {
+    border: 1px solid #78cbf2; }
+  input:required {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
 
 input.startDate,
 input.endDate {
@@ -514,10 +576,6 @@ input.endDate {
 input.submit {
   background-color: #494e6b;
   color: #ffffff; }
-
-input:required {
-  -webkit-box-shadow: none;
-          box-shadow: none; }
 
 form {
   display: -webkit-box;
@@ -646,3 +704,56 @@ footer {
   footer a {
     color: #ffffff;
     font-size: 0.75rem; }
+
+/**** screen meets or exceeds 500px****/
+@media (min-width: 500px) {
+  header {
+    padding-top: 80px; }
+  .chevron {
+    width: 15%; }
+  .modal {
+    width: 478px; }
+  .ui-datepicker {
+    width: 50%; } }
+
+/**** screen meets or exceeds 768px ****/
+@media (min-width: 768px) {
+  header h2 {
+    padding-bottom: 60px; }
+  h1 {
+    font-size: 3rem; }
+  h2,
+  p,
+  .swal-text {
+    font-size: 1.25rem; }
+  .chevron {
+    width: 15%; }
+  form {
+    margin: 0 auto;
+    width: 80%; }
+  .ui-datepicker {
+    width: 50%; } }
+
+/**** screen meets or exceeds 920px****/
+@media (min-width: 920px) {
+  header {
+    padding-top: 100px; }
+    header .wrapper {
+      width: 70%; }
+  .chevron {
+    width: 12%; }
+  form {
+    width: 60%; }
+  .ui-datepicker {
+    width: 40%; } }
+
+/**** screen meets or exceeds 1400px ****/
+@media (min-width: 1400px) {
+  header .wrapper {
+    width: 60%; }
+  .chevron {
+    width: 10%; }
+  form {
+    width: 50%; }
+  .ui-datepicker {
+    width: 30%; } }

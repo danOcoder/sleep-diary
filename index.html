@@ -21,6 +21,7 @@
   </head>
 
   <body>
+    <!-- HEADER BEGINS -->
     <header>
       <div class="wrapper">
         <h1>sleep efficiency calculator</h1>
@@ -28,7 +29,7 @@
           Sleep efficiency is the ratio of your total time asleep in a night
           compared to the total amount of time you spent in bed.
         </h2>
-        <a href="#" class="chevron">
+        <a href="#" class="chevron" role="button">
           <img
             src="./public/assets/noun_chevron_712775.png"
             alt="white chevron"
@@ -36,9 +37,13 @@
         </a>
       </div>
     </header>
+    <!-- HEADER ENDS -->
+    <!-- MAIN BEGINS -->
     <main>
       <div class="wrapper">
+        <!-- Form Begins -->
         <form>
+          <!-- Sleep start div -->
           <div>
             <h2>When did you get into bed?</h2>
             <label for="startDate"
@@ -59,6 +64,8 @@
                 required
             /></label>
           </div>
+          <!-- Sleep start div ends -->
+          <!-- Time to sleep div starts-->
           <div>
             <h2>How long did it take you to fall asleep</h2>
             <label for="timeToSleep"
@@ -72,6 +79,8 @@
                 oninput="validity.valid||(value='');"
             /></label>
           </div>
+          <!-- Time to sleep div ends -->
+          <!-- Time awake div starts -->
           <div>
             <h2>
               If you woke during the night what was the total amount of time you
@@ -88,6 +97,8 @@
                 oninput="validity.valid||(value='');"
             /></label>
           </div>
+          <!-- Time awake div ends -->
+          <!-- Sleep end div starts -->
           <div>
             <h2>When did you wake for the final time?</h2>
             <label for="endDate"
@@ -108,6 +119,7 @@
                 required
             /></label>
           </div>
+          <!-- Sleep end div starts -->
           <div>
             <label for="submit"
               ><input
@@ -118,7 +130,10 @@
                 value="Calculate"
             /></label>
           </div>
+          <!-- Sleep end div ends -->
         </form>
+        <!-- Form ends -->
+        <!-- Modal starts -->
         <div class="mask" role="dialog"></div>
         <div class="modal" role="alert">
           <ul>
@@ -138,13 +153,17 @@
           <div class="summaryWrap">
             <p class="summary"></p>
           </div>
-          <button class="closeModal" role="button">ok</button>
+          <a href="#" class="closeModal" role="button">ok</a>
         </div>
+        <!-- Modal ends -->
       </div>
     </main>
+    <!-- MAIN ENDS -->
+    <!-- FOOTER STARTS -->
     <footer>
       <a href="mailto: info@danocoder.com">info@danocoder.com</a>
     </footer>
+    <!-- FOOTER ENDS -->
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"

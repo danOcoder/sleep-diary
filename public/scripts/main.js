@@ -28,7 +28,7 @@ app.duration = function () {
       app.errorMessage('Sleep start cannot occur before sleep end');
     }
   } else {
-    app.errorMessage('Invalid time - ensure time entries are formatted correctly i.e. 10pm, 23:15 or 6.15am');
+    app.errorMessage('Invalid time - time can be entered in any of these formats 10pm, 6.15am, 23:15 etc');
   }
 }; // calculate total time asleep
 
@@ -65,13 +65,13 @@ app.summaryModal = function (value, value2, value3) {
     summaryText = "A sleep efficiency of less than 85% is considered to be poor, there are many ways to improve this, a great place to start is to review your sleep hygiene.";
   } else if (value > 98) {
     if (value2 < 420) {
-      summaryText = "A sleep efficiency of ".concat(value, "% is excellent however ").concat(value3, " of sleep is less than the recommended 7-8 hours, it can be very beneficial to adopt a routine window for sleep to maximize your time slept.");
+      summaryText = "A sleep efficiency of ".concat(value, "% is excellent however ").concat(value3, " of sleep is less than the recommended 7-8 hours, it can be very beneficial to adopt a routine window for sleep to maximize your time asleep.");
     } else {
       summaryText = "A sleep efficiency of ".concat(value, "% & ").concat(value3, " of sleep is excellent, congratulations & keep up the good work!");
     }
   } else {
     if (value2 < 420) {
-      summaryText = "A sleep efficiency of ".concat(value, "% is optimal however your ").concat(value3, " sleep is less than the recommended 7-8 hours, it can be very beneficial to adopt a routine window for sleep to maximize your time slept.");
+      summaryText = "A sleep efficiency of ".concat(value, "% is optimal however your ").concat(value3, " of sleep is less than the recommended 7-8 hours, it can be very beneficial to adopt a routine window for sleep to maximize your time asleep.");
     } else {
       summaryText = "A sleep efficiency of ".concat(value, "% & ").concat(value3, " of sleep is optimal keep up the good work!");
     }
@@ -116,7 +116,7 @@ app.init = function () {
   $('form').on('submit', function (event) {
     event.preventDefault();
 
-    if (isNaN(app.calculateEfficiency()) === false) {
+    if (!isNaN(app.calculateEfficiency())) {
       app.summaryModal(app.calculateEfficiency(), app.totalAsleep(), app.convertMinsToHrsMins(app.totalAsleep()));
     }
   });
