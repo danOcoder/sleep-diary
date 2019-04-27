@@ -222,7 +222,7 @@ header {
   background-position: center center;
   font-family: 'Open Sans', sans-serif;
   padding-top: 60px;
-  min-height: 700px; }
+  min-height: 100vh; }
   header h2 {
     padding-bottom: 40px;
     line-height: 1.5; }
@@ -514,7 +514,7 @@ header {
   background-position: center center;
   font-family: 'Open Sans', sans-serif;
   padding-top: 60px;
-  min-height: 700px; }
+  min-height: 100vh; }
   header h2 {
     padding-bottom: 40px;
     line-height: 1.5; }
