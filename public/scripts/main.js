@@ -111,7 +111,7 @@ app.init = function () {
   $('.chevron').on('click', function () {
     $('html, body').animate({
       scrollTop: $('form').offset().top
-    }, 1600);
+    }, 1000);
   });
   $('form').on('submit', function (event) {
     event.preventDefault();

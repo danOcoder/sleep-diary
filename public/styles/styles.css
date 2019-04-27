@@ -222,7 +222,7 @@ header {
   background-position: center center;
   font-family: 'Open Sans', sans-serif;
   padding-top: 60px;
-  height: 100vh; }
+  min-height: 700px; }
   header h2 {
     padding-bottom: 40px;
     line-height: 1.5; }
@@ -465,7 +465,6 @@ footer {
   .ui-datepicker {
     width: 30%; } }
 
-
 /**** Variables ****/
 /**** Base Styles ****/
 html {
@@ -515,7 +514,7 @@ header {
   background-position: center center;
   font-family: 'Open Sans', sans-serif;
   padding-top: 60px;
-  height: 100vh; }
+  min-height: 700px; }
   header h2 {
     padding-bottom: 40px;
     line-height: 1.5; }
