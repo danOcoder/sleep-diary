@@ -4,7 +4,7 @@ var app = {}; // initialize datepicker & timepicker
 
 $('#startDate, #endDate').datepicker({
   dateFormat: 'yy-mm-dd'
-});
+}).attr('readonly', 'readonly');
 $('#startTime, #endTime').timepicker({
   timeFormat: 'HH:mm:ss',
   dropdown: false
